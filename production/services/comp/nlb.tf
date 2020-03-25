@@ -71,7 +71,7 @@ resource "aws_lb_listener" "gitlab-nlb-listener443" {
   load_balancer_arn = aws_lb.gitlab-nlb.arn
   protocol          = "TLS"
   port              = 443
-  certificate_arn   = var.acm-opsflex
+  certificate_arn   = var.acm_comp
   depends_on        = [ aws_lb.gitlab-nlb, aws_lb_target_group.gitlab-tg80 ]
 
   default_action {

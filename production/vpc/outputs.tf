@@ -1,3 +1,3 @@
 output "id" {
-  value = aws_vpc.opsflex.id
+  value = aws_vpc.comp.id
 }

@@ -16,12 +16,6 @@ variable "aws_region_alias" {
   type = string
 }
 
-variable "acm-opsflex" {
-  description = "prefix resource name"
-  type = string
-  default = "arn:aws:acm:ap-northeast-2:144149479695:certificate/f18b5da0-218d-44cc-a28c-a3774bbd7641"
-}
-
 
 # ######################
 # VPC
@@ -77,4 +71,39 @@ variable "private_rt_tag_names" {
 variable "sg_cidr_block" {
   description = "sg cidr block"
   type = list(string)
+}
+
+
+# ######################
+# ACM
+# Route 53
+# ######################
+# acm
+variable "acm_comp" {
+  description = "prefix resource name"
+  type = string
+}
+
+# gitlab host
+variable "gitlab_host" {
+  description = "gitlab host name"
+  type = string
+}
+
+# jenkins host
+variable "jenkins_host" {
+  description = "jenkins host name"
+  type = string
+}
+
+# nexus host
+variable "nexus_host" {
+  description = "nexus host name"
+  type = string
+}
+
+# sonarqube host
+variable "sonarqube_host" {
+  description = "sonarqube host name"
+  type = string
 }

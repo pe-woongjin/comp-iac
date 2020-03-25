@@ -89,3 +89,17 @@ sg_cidr_block = ["58.151.93.9/32", "58.151.93.2/32"]
 # Launch Configuration
 # AutoScaling Group
 # ######################
+
+
+# ######################
+# ACM
+# Route 53
+# ######################
+# acm
+acm_comp = "arn:aws:acm:ap-northeast-2:144149479695:certificate/efc7a467-526d-4476-b91f-ef69f146c6a6"
+
+# route 53 host name
+gitlab_host = "scm.mingming.shop"
+jenkins_host = "jenkins.mingming.shop"
+nexus_host = "nexus.mingming.shop"
+sonarqube_host = "sonarqube.mingming.shop"

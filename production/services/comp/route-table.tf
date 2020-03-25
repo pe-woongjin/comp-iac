@@ -38,7 +38,7 @@ resource "aws_route_table_association" "pub-rt-ac" {
   route_table_id  = aws_route_table.pub-rt.*.id[0]
 }
 
-resource "aws_route_table_association" "opsflex-rt-as-private" {
+resource "aws_route_table_association" "comp-rt-as-private" {
   count           = length(aws_subnet.mgmt-sn)
 
   subnet_id       = aws_subnet.mgmt-sn.*.id[count.index]

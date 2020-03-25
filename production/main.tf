@@ -20,9 +20,8 @@ module "vpc" {
   vpc_cidr_block = var.vpc_cidr_block
 }
 
-
-module "opsflex" {
-  source = "./services/opsflex"
+module "comp" {
+  source = "./services/comp"
 
   # service name
   service_name = var.service_name
@@ -37,15 +36,23 @@ module "opsflex" {
   vpc_id = module.vpc.id
   vpc_cidr_block = var.vpc_cidr_block
 
-  # for subnets
+  # subnets
   pub_sn_list = var.pub_sn_list
   mgmt_sn_list = var.mgmt_sn_list
 
-  # for route table
+  # route table
   public_rt_tag_names = var.public_rt_tag_names
   private_rt_tag_names = var.private_rt_tag_names
 
-  # for sg
+  # sg
   sg_cidr_block = var.sg_cidr_block
 
+  # acm
+  acm_comp = var.acm_comp
+
+  # host
+  gitlab_host = var.gitlab_host
+  jenkins_host = var.jenkins_host
+  nexus_host = var.nexus_host
+  sonarqube_host = var.sonarqube_host
 }

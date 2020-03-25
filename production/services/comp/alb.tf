@@ -15,9 +15,6 @@ resource "aws_alb" "mgmt-alb" {
   }
 }
 
-// = gitlab
-// ALB로 gitlab 연결, 이미 NLB로 gitlab 통신이 되고 있으나,
-// 테스트이거나 필요하다면 ALB에 두면 됩니다,....
 resource "aws_alb_target_group" "scm-tg80"  {
   name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-scm-tg80"
   protocol    = "HTTP"
@@ -61,11 +58,25 @@ resource "aws_alb_target_group" "nexus-tg8081"  {
   }
 }
 
+resource "aws_alb_target_group" "sonarqube-tg9000"  {
+  name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-sonarqube-tg9000"
+  protocol    = "HTTP"
+  port        = 9000
+  target_type = "instance"
+  vpc_id      = var.vpc_id
+  depends_on  = [ aws_alb.mgmt-alb ]
+
+  tags = {
+    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-nexus-tg8081"
+    Environment = var.environment
+  }
+}
+
 resource "aws_alb_listener" "mgmt-alb-listener443" {
   load_balancer_arn = aws_alb.mgmt-alb.arn
   port              = 443
   protocol          = "HTTPS"
-  certificate_arn   = var.acm-opsflex
+  certificate_arn   = var.acm_comp
   depends_on        = [ aws_alb.mgmt-alb, aws_alb_target_group.jenkins-tg8088 ]
 
   default_action {
@@ -85,7 +96,7 @@ resource "aws_alb_listener_rule" "mgmt-alb-listener443-gitlab-rule" {
 
   condition {
     host_header {
-      values = ["scm.opsflex.shop"]
+      values = [var.gitlab_host]
     }
   }
 }
@@ -101,7 +112,7 @@ resource "aws_alb_listener_rule" "mgmt-alb-listener443-jenkins-rule" {
 
   condition {
     host_header {
-      values = ["jenkins.opsflex.shop"]
+      values = [var.jenkins_host]
     }
   }
 }
@@ -117,7 +128,23 @@ resource "aws_alb_listener_rule" "mgmt-alb-listener443-nexus-rule" {
 
   condition {
     host_header {
-      values = ["nexus.opsflex.shop"]
+      values = [var.nexus_host]
+    }
+  }
+}
+
+resource "aws_alb_listener_rule" "mgmt-alb-listener443-sonarqube-rule" {
+  listener_arn        = aws_alb_listener.mgmt-alb-listener443.arn
+  depends_on          = [ aws_alb_target_group.sonarqube-tg9000  ]
+
+  action {
+    target_group_arn  = aws_alb_target_group.sonarqube-tg9000.arn
+    type              = "forward"
+  }
+
+  condition {
+    host_header {
+      values = [var.sonarqube_host]
     }
   }
 }

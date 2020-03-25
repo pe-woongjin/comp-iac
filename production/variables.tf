@@ -20,13 +20,13 @@ variable "environment" {
 }
 
 variable "aws_region" {
-  description = "Region for the OpsFlex"
+  description = "Region for the Comp"
   type = string
   default = "ap-northeast-2"
 }
 
 variable "aws_region_alias" {
-  description = "Region name for the OpsFlex"
+  description = "Region name for the Comp"
   type = string
   default = "apne2"
 }
@@ -95,3 +95,38 @@ variable "sg_cidr_block" {
 # Launch Configuration
 # AutoScaling Group
 # ######################
+
+
+# ######################
+# ACM
+# Route 53
+# ######################
+# acm
+variable "acm_comp" {
+  description = "prefix resource name"
+  type = string
+}
+
+# gitlab host
+variable "gitlab_host" {
+  description = "gitlab host name"
+  type = string
+}
+
+# jenkins host
+variable "jenkins_host" {
+  description = "jenkins host name"
+  type = string
+}
+
+# nexus host
+variable "nexus_host" {
+  description = "nexus host name"
+  type = string
+}
+
+# sonarqube host
+variable "sonarqube_host" {
+  description = "sonarqube host name"
+  type = string
+}

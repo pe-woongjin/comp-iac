@@ -1,4 +1,4 @@
-resource "aws_vpc" "opsflex" {
+resource "aws_vpc" "comp" {
   cidr_block = var.vpc_cidr_block
 
   enable_dns_hostnames = true
