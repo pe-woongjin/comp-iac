@@ -9,7 +9,7 @@ resource "aws_route_table" "pub-rt" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-${lookup(var.public_rt_tag_names[count.index], "Name")}"
+    Name        = "${var.tag_name}-${lookup(var.public_rt_tag_names[count.index], "Name")}"
     Environment = var.environment
   }
 }
@@ -25,12 +25,11 @@ resource "aws_route_table" "pri-rt" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-${lookup(var.private_rt_tag_names[count.index], "Name")}"
+    Name        = "${var.tag_name}-${lookup(var.private_rt_tag_names[count.index], "Name")}"
     Environment = var.environment
   }
 }
 
-# route table association
 resource "aws_route_table_association" "pub-rt-ac" {
   count           = length(aws_subnet.pub-sn)
 

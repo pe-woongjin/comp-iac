@@ -1,8 +1,8 @@
 resource "aws_lb" "gitlab-nlb" {
-  name               = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-nlb"
+  name               = "${var.tag_name}-gitlab-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = [aws_subnet.pub-sn[0].id, aws_subnet.pub-sn[1].id]
+  subnets            = var.pub_sn_ids
 
   enable_cross_zone_load_balancing = true
 
@@ -10,13 +10,13 @@ resource "aws_lb" "gitlab-nlb" {
   enable_deletion_protection = false
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-nlb"
+    Name        = "${var.tag_name}-gitlab-nlb"
     Environment = var.environment
   }
 }
 
 resource "aws_lb_target_group" "gitlab-tg80"  {
-  name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-tg80"
+  name        = "${var.tag_name}-gitlab-tg80"
   protocol    = "TCP"
   port        = 80
   target_type = "instance"
@@ -24,13 +24,13 @@ resource "aws_lb_target_group" "gitlab-tg80"  {
   depends_on  = [ aws_lb.gitlab-nlb ]
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-tg80"
+    Name        = "${var.tag_name}-gitlab-tg80"
     Environment = var.environment
   }
 }
 
 resource "aws_lb_target_group" "gitlab-ssh-tg22"  {
-  name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-ssh-tg22"
+  name        = "${var.tag_name}-gitlab-ssh-tg22"
   protocol    = "TCP"
   port        = 22
   target_type = "instance"
@@ -38,7 +38,7 @@ resource "aws_lb_target_group" "gitlab-ssh-tg22"  {
   depends_on  = [ aws_lb.gitlab-nlb ]
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-ssh-tg22"
+    Name        = "${var.tag_name}-gitlab-ssh-tg22"
     Environment = var.environment
   }
 }
@@ -71,7 +71,7 @@ resource "aws_lb_listener" "gitlab-nlb-listener443" {
   load_balancer_arn = aws_lb.gitlab-nlb.arn
   protocol          = "TLS"
   port              = 443
-  certificate_arn   = var.acm_comp
+  certificate_arn   = var.acm_arn
   depends_on        = [ aws_lb.gitlab-nlb, aws_lb_target_group.gitlab-tg80 ]
 
   default_action {

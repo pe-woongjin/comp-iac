@@ -1,6 +1,6 @@
 /* default management security group for ec2 instances. It helps monitoring, access operationg works like that. */
 resource "aws_security_group" "default-ops-sg" {
-  name          = "${var.service_name}-${var.aws_region_alias}-${var.environment}-default-ops-sg"
+  name          = "${var.tag_name}-default-ops-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -15,13 +15,13 @@ resource "aws_security_group" "default-ops-sg" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-default-ops-sg"
+    Name        = "${var.tag_name}-default-ops-sg"
     Environment = var.environment
   }
 }
 
 resource "aws_security_group" "gitlab-sg" {
-  name          = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-sg"
+  name          = "${var.tag_name}-gitlab-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -57,13 +57,14 @@ resource "aws_security_group" "gitlab-sg" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-gitlab-sg"
+    Name        = "${var.tag_name}-gitlab-sg"
     Environment = var.environment
   }
 }
 
+/* jenkins + nexus */
 resource "aws_security_group" "jenkins-sg" {
-  name          = "${var.service_name}-${var.aws_region_alias}-${var.environment}-jenkins-sg"
+  name          = "${var.tag_name}-jenkins-sg"
   vpc_id        = var.vpc_id
 
   /* jenkins */
@@ -94,18 +95,18 @@ resource "aws_security_group" "jenkins-sg" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-jenkins-sg"
+    Name        = "${var.tag_name}-jenkins-sg"
     Environment = var.environment
   }
 }
 
-resource "aws_security_group" "sonarqube-sg" {
-  name          = "${var.service_name}-${var.aws_region_alias}-${var.environment}-sonarqube-sg"
+resource "aws_security_group" "scouter-sg" {
+  name          = "${var.tag_name}-scouter-sg"
   vpc_id        = var.vpc_id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 6100
+    to_port     = 6100
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -122,14 +123,13 @@ resource "aws_security_group" "sonarqube-sg" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-sonarqube-sg"
+    Name        = "${var.tag_name}-scouter-sg"
     Environment = var.environment
   }
-
 }
 
 resource "aws_security_group" "mgmt-alb-sg" {
-  name          = "${var.service_name}-${var.aws_region_alias}-${var.environment}-mgmt-alb-sg"
+  name          = "${var.tag_name}-mgmt-alb-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -158,7 +158,7 @@ resource "aws_security_group" "mgmt-alb-sg" {
   }
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-mgmt-alb-sg"
+    Name        = "${var.tag_name}-mgmt-alb-sg"
     Environment = var.environment
   }
 }

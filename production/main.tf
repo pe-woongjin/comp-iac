@@ -12,25 +12,24 @@ provider "aws" {
 module "vpc" {
   source = "./vpc"
 
+  # common
   team_name = var.team_name
   environment = var.environment
   aws_region_alias = var.aws_region_alias
-
   service_name = var.service_name
+  service_version = var.service_version
+  tag_name = var.tag_name
+
+  # vpc
   vpc_cidr_block = var.vpc_cidr_block
 }
 
 module "comp" {
   source = "./services/comp"
 
-  # service name
-  service_name = var.service_name
-
-  # runtime environment
+  # common
   environment = var.environment
-
-  # region name
-  aws_region_alias = var.aws_region_alias
+  tag_name = var.tag_name
 
   # vpc
   vpc_id = module.vpc.id
@@ -46,13 +45,30 @@ module "comp" {
 
   # sg
   sg_cidr_block = var.sg_cidr_block
+}
+
+
+module "elb" {
+  source = "./elb"
+
+  # common
+  environment = var.environment
+  tag_name = var.tag_name
+
+  # vpc
+  vpc_id = module.vpc.id
+  vpc_cidr_block = var.vpc_cidr_block
+
+  # subnets
+  pub_sn_ids = module.comp.pub_sn_ids
+
+  # sg
+  sg_cidr_block = var.sg_cidr_block
+  mgmt_sg_id = module.comp.mgmt_sg_id
 
   # acm
-  acm_comp = var.acm_comp
+  acm_arn = var.acm_arn
 
   # host
-  gitlab_host = var.gitlab_host
-  jenkins_host = var.jenkins_host
-  nexus_host = var.nexus_host
-  sonarqube_host = var.sonarqube_host
+  host = var.host
 }
