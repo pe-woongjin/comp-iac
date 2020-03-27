@@ -3,7 +3,7 @@ resource "aws_eip" "eip" {
   depends_on  = [aws_internet_gateway.igw]
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-eip"
+    Name        = "${var.tag_name}-eip"
     Environment = var.environment
   }
 }

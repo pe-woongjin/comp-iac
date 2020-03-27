@@ -4,7 +4,7 @@ resource "aws_nat_gateway" "nat" {
   depends_on    = [aws_internet_gateway.igw, aws_eip.eip]
 
   tags = {
-    Name        = "${var.service_name}-${var.aws_region_alias}-${var.environment}-nat"
+    Name        = "${var.tag_name}-nat"
     Environment = var.environment
   }
 }

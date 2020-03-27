@@ -5,7 +5,10 @@
 team_name = "Automation"
 
 # service name
-service_name = "comp"
+service_name = "ming"
+
+# service version
+service_version = "0.0.2"
 
 # env
 environment = "prod"
@@ -14,18 +17,21 @@ environment = "prod"
 aws_region = "ap-northeast-2"
 aws_region_alias = "apne2"
 
+# tag
+tag_name = "ming-apne2-prod"
+
 
 # ######################
 # VPC
 # ######################
-# cidr block
+# vpc cidr block
 vpc_cidr_block = "10.40.0.0/16"
 
 
 # ######################
 # Subnet
 # ######################
-# subnet public
+# public subnet
 pub_sn_list = [
   {
     cidr_block = "10.40.10.0/24",
@@ -39,7 +45,7 @@ pub_sn_list = [
   }
 ]
 
-# subnet toolchain private
+# private subnet
 mgmt_sn_list = [
   {
     cidr_block = "10.40.20.0/24",
@@ -55,23 +61,16 @@ mgmt_sn_list = [
 
 
 # ######################
-# Internet Gateway
-# Elastic IP
-# NAT
-# ######################
-
-
-# ######################
 # Route Table
 # ######################
-# route table
+# public route table
 public_rt_tag_names = [
   {
     Name = "pub-rt"
   }
 ]
 
-# route table
+# private route table
 private_rt_tag_names = [
   {
     Name = "pri-rt"
@@ -82,13 +81,8 @@ private_rt_tag_names = [
 # ######################
 # Security Group
 # ######################
+# sg cidr block
 sg_cidr_block = ["58.151.93.9/32", "58.151.93.2/32"]
-
-
-# ######################
-# Launch Configuration
-# AutoScaling Group
-# ######################
 
 
 # ######################
@@ -96,10 +90,12 @@ sg_cidr_block = ["58.151.93.9/32", "58.151.93.2/32"]
 # Route 53
 # ######################
 # acm
-acm_comp = "arn:aws:acm:ap-northeast-2:144149479695:certificate/efc7a467-526d-4476-b91f-ef69f146c6a6"
+acm_arn = "arn:aws:acm:ap-northeast-2:144149479695:certificate/efc7a467-526d-4476-b91f-ef69f146c6a6"
 
 # route 53 host name
-gitlab_host = "scm.mingming.shop"
-jenkins_host = "jenkins.mingming.shop"
-nexus_host = "nexus.mingming.shop"
-sonarqube_host = "sonarqube.mingming.shop"
+host = {
+  "gitlab" = "scm.mingming.shop"
+  "jenkins" = "jenkins.mingming.shop"
+  "nexus" = "nexus.mingming.shop"
+  "scouter" = "scouter.mingming.shop"
+}
