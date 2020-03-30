@@ -17,38 +17,12 @@ module "vpc" {
   service_name = var.service_name
   service_version = var.service_version
   environment = var.environment
-  region_nm = var.region_nm
   svc_prefix_nm = "${var.service_name}-${var.environment}"
   resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
 
   # vpc
   vpc_cidr_block = var.vpc_cidr_block
 }
-
-module "comp" {
-  source = "./services/comp"
-
-  # common
-  environment = var.environment
-  svc_prefix_nm = "${var.service_name}-${var.environment}"
-  resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
-
-  # vpc
-  vpc_id = module.vpc.id
-  vpc_cidr_block = var.vpc_cidr_block
-
-  # subnets
-  pub_sn_list = var.pub_sn_list
-  mgmt_sn_list = var.mgmt_sn_list
-
-  # route table
-  public_rt_tag_names = var.public_rt_tag_names
-  private_rt_tag_names = var.private_rt_tag_names
-
-  # sg
-  sg_cidr_block = var.sg_cidr_block
-}
-
 
 module "elb" {
   source = "./modules/elb"
@@ -82,4 +56,28 @@ module "elb" {
 
   # host
   hosts = var.hosts
+}
+
+module "comp" {
+  source = "./services/comp"
+
+  # common
+  environment = var.environment
+  svc_prefix_nm = "${var.service_name}-${var.environment}"
+  resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
+
+  # vpc
+  vpc_id = module.vpc.id
+  vpc_cidr_block = var.vpc_cidr_block
+
+  # subnets
+  pub_sn_list = var.pub_sn_list
+  mgmt_sn_list = var.mgmt_sn_list
+
+  # route table
+  public_rt_tag_names = var.public_rt_tag_names
+  private_rt_tag_names = var.private_rt_tag_names
+
+  # sg
+  sg_cidr_block = var.sg_cidr_block
 }

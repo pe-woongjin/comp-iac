@@ -21,11 +21,6 @@ variable "environment" {
   type = string
 }
 
-variable "region_nm" {
-  description = "aws region alias"
-  type = string
-}
-
 variable "svc_prefix_nm" {
   description = "svc prefix name"
   type = string
