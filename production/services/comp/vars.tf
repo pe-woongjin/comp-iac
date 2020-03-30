@@ -6,8 +6,13 @@ variable "environment" {
   type = string
 }
 
-variable "tag_name" {
-  description = "tag name"
+variable "svc_prefix_nm" {
+  description = "svc prefix name"
+  type = string
+}
+
+variable "resrc_prefix_nm" {
+  description = "resource prefix name"
   type = string
 }
 

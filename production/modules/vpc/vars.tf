@@ -1,3 +1,6 @@
+# ######################
+# COMMON
+# ######################
 variable "team_name" {
   description = "team name of DevOps"
   type = string
@@ -18,16 +21,26 @@ variable "environment" {
   type = string
 }
 
-variable "aws_region_alias" {
+variable "region_nm" {
   description = "aws region alias"
   type = string
 }
 
-variable "tag_name" {
-  description = "tag name"
+variable "svc_prefix_nm" {
+  description = "svc prefix name"
   type = string
 }
 
+variable "resrc_prefix_nm" {
+  description = "resource prefix name"
+  type = string
+}
+
+
+# ######################
+# VPC
+# ######################
+# vpc cidr block
 variable "vpc_cidr_block" {
   description = "cidr block of vpc"
   type = string

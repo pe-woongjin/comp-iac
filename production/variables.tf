@@ -21,18 +21,13 @@ variable "environment" {
   type = string
 }
 
-variable "aws_region" {
+variable "region_name" {
   description = "aws region"
   type = string
 }
 
-variable "aws_region_alias" {
+variable "region_nm" {
   description = "aws region alias"
-  type = string
-}
-
-variable "tag_name" {
-  description = "tag name"
   type = string
 }
 
@@ -100,7 +95,7 @@ variable "acm_arn" {
 }
 
 # route 53 host name
-variable "host" {
+variable "hosts" {
   description = "route 53 host name"
   type = map(string)
 }

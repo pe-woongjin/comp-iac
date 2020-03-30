@@ -1,6 +1,6 @@
 /* default management security group for ec2 instances. It helps monitoring, access operationg works like that. */
 resource "aws_security_group" "default-ops-sg" {
-  name          = "${var.tag_name}-default-ops-sg"
+  name          = "${var.resrc_prefix_nm}-default-ops-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -15,13 +15,13 @@ resource "aws_security_group" "default-ops-sg" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-default-ops-sg"
+    Name        = "${var.resrc_prefix_nm}-default-ops-sg"
     Environment = var.environment
   }
 }
 
 resource "aws_security_group" "gitlab-sg" {
-  name          = "${var.tag_name}-gitlab-sg"
+  name          = "${var.resrc_prefix_nm}-gitlab-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -57,14 +57,14 @@ resource "aws_security_group" "gitlab-sg" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-gitlab-sg"
+    Name        = "${var.resrc_prefix_nm}-gitlab-sg"
     Environment = var.environment
   }
 }
 
 /* jenkins + nexus */
 resource "aws_security_group" "jenkins-sg" {
-  name          = "${var.tag_name}-jenkins-sg"
+  name          = "${var.resrc_prefix_nm}-jenkins-sg"
   vpc_id        = var.vpc_id
 
   /* jenkins */
@@ -95,13 +95,13 @@ resource "aws_security_group" "jenkins-sg" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-jenkins-sg"
+    Name        = "${var.resrc_prefix_nm}-jenkins-sg"
     Environment = var.environment
   }
 }
 
 resource "aws_security_group" "scouter-sg" {
-  name          = "${var.tag_name}-scouter-sg"
+  name          = "${var.resrc_prefix_nm}-scouter-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -123,13 +123,13 @@ resource "aws_security_group" "scouter-sg" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-scouter-sg"
+    Name        = "${var.resrc_prefix_nm}-scouter-sg"
     Environment = var.environment
   }
 }
 
 resource "aws_security_group" "mgmt-alb-sg" {
-  name          = "${var.tag_name}-mgmt-alb-sg"
+  name          = "${var.resrc_prefix_nm}-mgmt-alb-sg"
   vpc_id        = var.vpc_id
 
   ingress {
@@ -158,7 +158,7 @@ resource "aws_security_group" "mgmt-alb-sg" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-mgmt-alb-sg"
+    Name        = "${var.resrc_prefix_nm}-mgmt-alb-sg"
     Environment = var.environment
   }
 }
