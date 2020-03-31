@@ -5,23 +5,57 @@ terraform {
 
 provider "aws" {
   shared_credentials_file = "~/.aws/credentials"
-  region = var.aws_region
+  region = var.region_name
   version = "~> 2.51"
 }
 
 module "vpc" {
-  source = "./vpc"
+  source = "./modules/vpc"
 
   # common
   team_name = var.team_name
-  environment = var.environment
-  aws_region_alias = var.aws_region_alias
   service_name = var.service_name
   service_version = var.service_version
-  tag_name = var.tag_name
+  environment = var.environment
+  svc_prefix_nm = "${var.service_name}-${var.environment}"
+  resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
 
   # vpc
   vpc_cidr_block = var.vpc_cidr_block
+}
+
+module "elb" {
+  source = "./modules/elb"
+
+  # common
+  environment = var.environment
+  svc_prefix_nm = "${var.service_name}-${var.environment}"
+  resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
+
+  # vpc
+  vpc_id = module.vpc.id
+  vpc_cidr_block = var.vpc_cidr_block
+
+  # subnets
+  pub_sn_ids = module.comp.pub_sn_ids
+
+  # sg
+  sg_cidr_block = var.sg_cidr_block
+  mgmt_sg_id = module.comp.mgmt_sg_id
+
+  # tg
+  gitlab-tg80 = module.comp.gitlab-tg80
+  gitlab-ssh-tg22 = module.comp.gitlab-ssh-tg22
+  scm-tg80 = module.comp.scm-tg80
+  jenkins-tg8088 = module.comp.jenkins-tg8088
+  nexus-tg8081 = module.comp.nexus-tg8081
+  scouter-tg6100 = module.comp.scouter-tg6100
+
+  # acm
+  acm_arn = var.acm_arn
+
+  # host
+  hosts = var.hosts
 }
 
 module "comp" {
@@ -29,7 +63,8 @@ module "comp" {
 
   # common
   environment = var.environment
-  tag_name = var.tag_name
+  svc_prefix_nm = "${var.service_name}-${var.environment}"
+  resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
 
   # vpc
   vpc_id = module.vpc.id
@@ -45,30 +80,4 @@ module "comp" {
 
   # sg
   sg_cidr_block = var.sg_cidr_block
-}
-
-
-module "elb" {
-  source = "./elb"
-
-  # common
-  environment = var.environment
-  tag_name = var.tag_name
-
-  # vpc
-  vpc_id = module.vpc.id
-  vpc_cidr_block = var.vpc_cidr_block
-
-  # subnets
-  pub_sn_ids = module.comp.pub_sn_ids
-
-  # sg
-  sg_cidr_block = var.sg_cidr_block
-  mgmt_sg_id = module.comp.mgmt_sg_id
-
-  # acm
-  acm_arn = var.acm_arn
-
-  # host
-  host = var.host
 }

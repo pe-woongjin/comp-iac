@@ -8,7 +8,7 @@ resource "aws_subnet" "pub-sn" {
   map_public_ip_on_launch   = true
 
   tags = {
-    Name        = "${var.tag_name}-${lookup(var.pub_sn_list[count.index], "Name")}"
+    Name        = "${var.resrc_prefix_nm}-${lookup(var.pub_sn_list[count.index], "Name")}"
     Environment = var.environment
   }
 }
@@ -23,7 +23,7 @@ resource "aws_subnet" "mgmt-sn" {
   map_public_ip_on_launch   = false
 
   tags = {
-    Name        = "${var.tag_name}-${lookup(var.mgmt_sn_list[count.index], "Name")}"
+    Name        = "${var.resrc_prefix_nm}-${lookup(var.mgmt_sn_list[count.index], "Name")}"
     Environment = var.environment
   }
 }

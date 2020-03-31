@@ -9,7 +9,7 @@ resource "aws_route_table" "pub-rt" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-${lookup(var.public_rt_tag_names[count.index], "Name")}"
+    Name        = "${var.resrc_prefix_nm}-${lookup(var.public_rt_tag_names[count.index], "Name")}"
     Environment = var.environment
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route_table" "pri-rt" {
   }
 
   tags = {
-    Name        = "${var.tag_name}-${lookup(var.private_rt_tag_names[count.index], "Name")}"
+    Name        = "${var.resrc_prefix_nm}-${lookup(var.private_rt_tag_names[count.index], "Name")}"
     Environment = var.environment
   }
 }

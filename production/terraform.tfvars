@@ -5,20 +5,17 @@
 team_name = "Automation"
 
 # service name
-service_name = "ming"
+service_name = "comp"
 
 # service version
-service_version = "0.0.2"
+service_version = "0.2"
 
 # env
 environment = "prod"
 
 # region
-aws_region = "ap-northeast-2"
-aws_region_alias = "apne2"
-
-# tag
-tag_name = "ming-apne2-prod"
+region_name = "ap-northeast-2"
+region_nm = "apne2"
 
 
 # ######################
@@ -93,7 +90,7 @@ sg_cidr_block = ["58.151.93.9/32", "58.151.93.2/32"]
 acm_arn = "arn:aws:acm:ap-northeast-2:144149479695:certificate/efc7a467-526d-4476-b91f-ef69f146c6a6"
 
 # route 53 host name
-host = {
+hosts = {
   "gitlab" = "scm.mingming.shop"
   "jenkins" = "jenkins.mingming.shop"
   "nexus" = "nexus.mingming.shop"

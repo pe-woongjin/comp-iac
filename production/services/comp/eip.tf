@@ -3,7 +3,7 @@ resource "aws_eip" "eip" {
   depends_on  = [aws_internet_gateway.igw]
 
   tags = {
-    Name        = "${var.tag_name}-eip"
+    Name        = "${var.resrc_prefix_nm}-eip"
     Environment = var.environment
   }
 }
