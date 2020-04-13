@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>directory - Terraform guild</title>
+        <title>directory - Terraform guide</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">Terraform guild</a>
+                <a class="navbar-brand" href="../..">Terraform guide</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,9 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Main</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../build/" class="nav-link">Build</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Source <b class="caret"></b></a>
@@ -53,9 +56,6 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
-                                <a href="../build/" class="nav-link">Build</a>
-                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -65,7 +65,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../build/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -92,12 +92,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#directory" class="nav-link">Directory</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link"></a>
+            <li class="nav-item" data-level="2"><a href="#directory" class="nav-link">Directory</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link"></a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -105,23 +106,36 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="directory">Directory</h1>
+<h2 id="directory"><strong>Directory</strong></h2>
 <h4 id="comp-iac">웅진 프로젝트 중, comp-iac의 디렉토리 구조</h4>
-<h2 id="_1"><img alt="mkdocs new" src="../../img/directory.png" /></h2>
+<h2 id="_1"><img alt="Screenshot" src="../../img/directory.png" /></h2>
 <h3 id="mkdocs-manual"><strong>mkdocs-manual</strong></h3>
-<p>매뉴얼 가이드 폴더</p>
 <blockquote>
-<p>(MKDocs는 마크다운 방식으로 글쓰기를 하며, <code>serve</code>라는 명령어를 통해서 실시간으로 매뉴얼 내역을 확인할 수 있습니다. <a href="https://www.mkdocs.org">mkdocs.org</a>)  </p>
+<p>매뉴얼 가이드 폴더
+(MKDocs는 마크다운 방식으로 글쓰기를 하며, <code>serve</code>라는 명령어를 통해서 실시간으로 매뉴얼 내역을 확인할 수 있습니다. <a href="https://www.mkdocs.org">mkdocs.org</a>)<br />
+</p>
 </blockquote>
 <h3 id="production"><strong>production</strong></h3>
+<blockquote>
 <p>production 환경에서의 구조를 의미합니다.</p>
-<h5 id="1-modules">1. modules</h5>
+<blockquote>
+<ol>
+<li>modules<blockquote>
 <p>comp-iac 프로젝트에서의 <strong>공통 모듈</strong>에 속하는 resource로, <code>elb</code>와 <code>vpc</code>가 위치합니다. </p>
-<h5 id="2-services">2. services</h5>
-<p>comp-iac 프로젝트에서를 구성하는 <strong>리소스</strong>가 위치합니다.  </p>
-<blockquote></blockquote>
-<h4 id="site"><strong>site</strong></h4>
-<p>웅진 프로젝트의 아키텍처 명세서 및 설계 문서가 존재합니다.</p></div>
+</blockquote>
+</li>
+<li>services<blockquote>
+<p>comp-iac 프로젝트에서를 구성하는 <strong>리소스</strong>가 위치합니다.<br />
+</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<h3 id="site"><strong>site</strong></h3>
+<blockquote>
+<p>웅진 프로젝트의 아키텍처 명세서 및 설계 문서가 존재합니다.</p>
+</blockquote></div>
             </div>
         </div>
 

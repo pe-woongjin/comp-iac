@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Build - Terraform guild</title>
+        <title>Build - Terraform guide</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">Terraform guild</a>
+                <a class="navbar-brand" href="../..">Terraform guide</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,9 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Main</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Build</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Source <b class="caret"></b></a>
@@ -53,9 +56,6 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Build</a>
-                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -65,12 +65,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../source/service/" class="nav-link">
+                                <a rel="prev" href="../.." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../directory/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -118,23 +118,31 @@ $ cd ~/workspace/comp-iac
 <blockquote></blockquote>
 <h3 id="terraform-command"><strong>Terraform Command</strong></h3>
 <h4 id="init">init</h4>
+<blockquote>
 <p>테라폼 프로젝트 및 최신 플러그인 초기 설정을 진행합니다. </p>
+</blockquote>
 <pre><code class="console">terraform init
 </code></pre>
 
-<p><img alt="mkdocs new" src="../../img/terraform_init.png" /></p>
+<p><img alt="Screenshot" src="../../img/terraform_init.png" /></p>
+<blockquote></blockquote>
 <h4 id="plan">plan</h4>
+<blockquote>
 <p>어떤 리소스가 생성, 수정, 삭제될지 계획을 보여줍니다.</p>
+</blockquote>
 <pre><code class="console">terraform plan
 </code></pre>
 
-<p><img alt="mkdocs new" src="../../img/terraform_init.png" /></p>
+<p><img alt="Screenshot" src="../../img/terraform_init.png" /></p>
+<blockquote></blockquote>
 <h4 id="apply">apply</h4>
+<blockquote>
 <p>실제 .tf 파일의 내용대로 리소스를 생성, 수정, 삭제하는 일을 적용합니다.</p>
+</blockquote>
 <pre><code class="console">terraform apply
 </code></pre>
 
-<p><img alt="mkdocs new" src="../../img/terraform_apply.png" /></p></div>
+<p><img alt="Screenshot" src="../../img/terraform_apply.png" /></p></div>
             </div>
         </div>
 

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>module - Terraform guild</title>
+        <title>module - Terraform guide</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">Terraform guild</a>
+                <a class="navbar-brand" href="../..">Terraform guide</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,9 @@
                         <ul class="nav navbar-nav">
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Main</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../common/build/" class="nav-link">Build</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Source <b class="caret"></b></a>
@@ -52,9 +55,6 @@
     <a href="../service/" class="dropdown-item">services</a>
 </li>
                                 </ul>
-                            </li>
-                            <li class="navitem">
-                                <a href="../../common/build/" class="nav-link">Build</a>
                             </li>
                         </ul>
 
@@ -92,7 +92,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#module" class="nav-link">Module</a>
+            <li class="nav-item" data-level="2"><a href="#module" class="nav-link">Module</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -101,41 +101,35 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="module">Module</h1>
-<h4 id="comp-iac-resource-elb-vpc">comp-iac 프로젝트에서의 <strong>공통 모듈</strong>에 속하는 resource로, <code>elb</code>와 <code>vpc</code>가 위치합니다.</h4>
+<h2 id="module"><strong>Module</strong></h2>
+<h4 id="comp-iac-resource-elb-vpc">comp-iac 프로젝트에서의 <strong>공통 모듈(반드시 필요한 요소)</strong>에 속하는 resource로, <code>elb</code>와 <code>vpc</code>가 위치합니다.</h4>
 <hr />
-<blockquote></blockquote>
 <h3 id="1-elb">1. ELB</h3>
 <blockquote>
-<p><code>NLB.tf</code>, <code>ALB.tf</code>와 각각에 해당하는 <code>vars.tf</code>로 구성됩니다.</p>
+<p><code>nlb.tf</code>, <code>alb.tf</code>와 각각에 해당하는 <code>vars.tf</code>로 구성됩니다.</p>
 <blockquote>
 <ol>
 <li>
 <p>gitlab-nlb.tf
-<img alt="mkdocs new" src="../../img/nlb.png" /></p>
+<img alt="Screenshot" src="../../img/nlb.png" /></p>
 </li>
 <li>
 <p>mgmt-alb.tf
-<img alt="mkdocs new" src="../../img/alb.png" /></p>
+<img alt="Screenshot" src="../../img/alb.png" />
+</p>
 </li>
 </ol>
 </blockquote>
 </blockquote>
-<hr />
-<blockquote></blockquote>
 <h3 id="2-vpc">2. VPC</h3>
 <blockquote>
-<p><code>VPC.tf</code>와 vpc에 사용되는 <code>vars.tf</code>, 다른 모듈 및 리소스에서 사용할 수 있게 정의해둔 <code>output.tf</code>로 구성됩니다.</p>
+<p><code>vpc.tf</code>와 vpc에 사용되는 <code>vars.tf</code>, 다른 모듈 및 리소스에서 사용할 수 있게 정의해둔 <code>output.tf</code>로 구성됩니다.</p>
 <blockquote>
 <ol>
-<li>
-<p>vpc.tf
-<img alt="mkdocs new" src="../../img/vpc.png" /></p>
-</li>
-<li>
-<p>output.tf
-<img alt="mkdocs new" src="../../img/alb.png" /></p>
-</li>
+<li>vpc.tf
+<img alt="Screenshot" src="../../img/vpc.png" /></li>
+<li>output.tf
+ <img alt="Screenshot" src="../../img/output.png" /></li>
 </ol>
 </blockquote>
 </blockquote></div>
