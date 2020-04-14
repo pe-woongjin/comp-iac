@@ -18,22 +18,6 @@ variable "resrc_prefix_nm" {
 
 
 # ######################
-# VPC
-# ######################
-# vpc id
-variable "vpc_id" {
-  type        = string
-  description = "vpc id"
-}
-
-# vpc cidr block
-variable "vpc_cidr_block" {
-  description = "cidr block of vpc"
-  type = string
-}
-
-
-# ######################
 # Subnet
 # ######################
 # public subnet

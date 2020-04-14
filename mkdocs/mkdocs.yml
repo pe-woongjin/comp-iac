@@ -1,0 +1,8 @@
+site_name: Terraform guide
+pages:
+  - Main: index.md
+  - Build: 'common/build.md'
+  - Source:
+      - 'directory': 'common/directory.md'
+      - 'module': 'source/module.md'
+      - 'services': 'source/service.md'

@@ -26,12 +26,6 @@ variable "vpc_id" {
   description = "vpc id"
 }
 
-# vpc cidr block
-variable "vpc_cidr_block" {
-  description = "cidr block of vpc"
-  type = string
-}
-
 
 # ######################
 # Subnet

@@ -32,10 +32,6 @@ module "elb" {
   svc_prefix_nm = "${var.service_name}-${var.environment}"
   resrc_prefix_nm = "${var.service_name}-${var.region_nm}-${var.environment}"
 
-  # vpc
-  vpc_id = module.vpc.id
-  vpc_cidr_block = var.vpc_cidr_block
-
   # subnets
   pub_sn_ids = module.comp.pub_sn_ids
 
@@ -68,7 +64,6 @@ module "comp" {
 
   # vpc
   vpc_id = module.vpc.id
-  vpc_cidr_block = var.vpc_cidr_block
 
   # subnets
   pub_sn_list = var.pub_sn_list
