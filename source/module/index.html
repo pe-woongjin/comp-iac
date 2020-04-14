@@ -102,13 +102,13 @@
                     <div class="col-md-9" role="main">
 
 <h2 id="module"><strong>Module</strong></h2>
-<h4 id="comp-iac-resource-elb-vpc">comp-iac 프로젝트에서의 <strong>공통 모듈(반드시 필요한 요소)</strong>에 속하는 resource로, <code>elb</code>와 <code>vpc</code>가 위치합니다.</h4>
+<h4 id="comp-iac-resource-elb-vpc">comp-iac 프로젝트에서 <strong>공통 모듈(반드시 필요한 요소)</strong>에 속하는 resource로, <code>elb</code>와 <code>vpc</code>가 위치합니다.</h4>
 <hr />
 <h3 id="1-elb">1. ELB</h3>
 <blockquote>
 <p><code>nlb.tf</code>, <code>alb.tf</code>와 각각에 해당하는 <code>vars.tf</code>로 구성됩니다.</p>
 <blockquote>
-<ol>
+<ul>
 <li>
 <p>gitlab-nlb.tf
 <img alt="Screenshot" src="../../img/nlb.png" /></p>
@@ -118,19 +118,19 @@
 <img alt="Screenshot" src="../../img/alb.png" />
 </p>
 </li>
-</ol>
+</ul>
 </blockquote>
 </blockquote>
 <h3 id="2-vpc">2. VPC</h3>
 <blockquote>
 <p><code>vpc.tf</code>와 vpc에 사용되는 <code>vars.tf</code>, 다른 모듈 및 리소스에서 사용할 수 있게 정의해둔 <code>output.tf</code>로 구성됩니다.</p>
 <blockquote>
-<ol>
+<ul>
 <li>vpc.tf
 <img alt="Screenshot" src="../../img/vpc.png" /></li>
 <li>output.tf
  <img alt="Screenshot" src="../../img/output.png" /></li>
-</ol>
+</ul>
 </blockquote>
 </blockquote></div>
             </div>
